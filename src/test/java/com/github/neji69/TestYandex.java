@@ -31,5 +31,6 @@ public class TestYandex {
                 .as("Проверка Тайтла")
                 .isEqualTo("hello world — Яндекс: нашлось 2 млн результатов");
 
+        driver.quit();
     }
 }
