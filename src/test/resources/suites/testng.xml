@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Пельмешек/IdeaProjects/SeleniumTest/src/test/java/com/github/neji69/TestYandex.java">
+        <classes>
+            <class name="com.github.neji69.TestYandex">
+                <methods>
+                    <include name="testFirst"/>
+                    <include name="testTwo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
