@@ -15,15 +15,22 @@
             <testng.version>7.1.0</testng.version>
             <slf4j-log4j12.version>1.7.30</slf4j-log4j12.version>
             <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-            <suite></suite>
+            <suite>testng.xml</suite>
             <assertj-core.version>3.15.0</assertj-core.version>
+            <selenium-java.version>3.141.59</selenium-java.version>
+            <webdrivermanager.version>3.8.1</webdrivermanager.version>
         </properties>
 
         <dependencies>
             <dependency>
+                <groupId>io.github.bonigarcia</groupId>
+                <artifactId>webdrivermanager</artifactId>
+                <version>${webdrivermanager.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
-                <version>3.141.59</version>
+                <version>${selenium-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.testng</groupId>
