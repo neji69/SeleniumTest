@@ -4,14 +4,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.*;
+import org.openqa.selenium.support.ui.Select;
 
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class TestYandex {
@@ -48,6 +50,7 @@ public class TestYandex {
     @Test
     public void testTwo (){
         //Проверяем условия на странице button
+
         driver.get("https://savkk.github.io/selenium-practice/");
         driver.findElement(By.id("button")).click();
         driver.findElement(By.id("first")).click();
@@ -95,7 +98,46 @@ public class TestYandex {
         //Вот в данном тесте что и где мне нужно было залогировать и почему?
         //
     }
-    @AfterTest()
+
+    //Внутри этого теста домашка номер 16 --->
+    @Test
+    public void testThree () {
+        //Проверяем условия на странице button
+
+        driver.get("https://savkk.github.io/selenium-practice/");
+        driver.findElement(By.id("select")).click();
+        Select selectHero = new Select( driver.findElement(By.name("hero")));
+        selectHero.selectByVisibleText("John von Neumann");
+        List<String> progLang =new LinkedList<String>();
+                //(Collections.singleton((driver.findElement(By.name("languages")).getText())));
+        //System.out.println(progLang);
+        String languages = (driver.findElement(By.name("languages")).getText());
+        String[] arrSplit = languages.split("\n");
+        for (int i=0; i < arrSplit.length; i++)
+        {
+            progLang.add(arrSplit[i]);
+        }
+        System.out.println(progLang.get(3));
+
+        Select seleclanguages = new Select( driver.findElement(By.name("languages")));
+
+        int index1 = 0; // используеться для выбора индекса из списка
+        int index2 = 3; // используеться для выбора индекса из списка
+
+        seleclanguages.deselectByIndex(index1); // Есть ли разница обращаться к множественному выбору по имени или индексу?
+        seleclanguages.deselectByIndex(index2);
+        driver.findElement(By.id("go")).click();
+        //String s =driver.findElement(By.xpath("//div[@id='content']/label[4]")).getTagName();
+        List<WebElement> elementNameResult = driver.findElements(By.name("result"));
+        System.out.println (elementNameResult.get(1).getText());
+
+        assertThat(elementNameResult.get(1)) //как находить правильно второй одинаковый элемент,пришлось использовать икспатч
+                .as("Проверка выбора языков программирования ")
+                .isEqualTo(progLang.get(index1)+", " + progLang.get(index2));
+    }
+
+
+        @AfterTest()
     public void exitDriver(){
         driver.quit();
     }
