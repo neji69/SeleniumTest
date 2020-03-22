@@ -67,6 +67,9 @@ public class PromtAllertConfirm {
         else {
             driver.findElement(By.className("return")).click();
             driver.switchTo().alert().accept();
+
+            assertThat(driver.manage().getCookieNamed("alerts").getValue())
+                    .isEqualTo("done");
         }
     }
 

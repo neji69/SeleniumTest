@@ -2,10 +2,12 @@ package com.github.neji69;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,6 +44,9 @@ public class TestButton {
                 .as("Проверка надписи Great! Return to menu ")
                 .isEqualTo("Great! Return to menu");
         driver.findElement(By.linkText("Great! Return to menu")).click();
+
+        assertThat(driver.manage().getCookieNamed("button").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass

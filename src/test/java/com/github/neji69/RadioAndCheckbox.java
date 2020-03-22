@@ -49,6 +49,9 @@ public class RadioAndCheckbox {
         //
         //И раз пошла такая пьянка, еще вопрос. Не понимаю про логирование. Что и где нужно логировать?
         //Вот в данном тесте что и где мне нужно было залогировать и почему?
+
+        assertThat(driver.manage().getCookieNamed("checkboxes").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass

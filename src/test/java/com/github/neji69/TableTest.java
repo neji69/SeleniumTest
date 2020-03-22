@@ -8,6 +8,8 @@ import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class TableTest {
     WebDriver driver;
 
@@ -55,6 +57,9 @@ public class TableTest {
         driver.findElement(By.xpath("//*[@id=\"content\"]/input")).click();
 
         driver.findElement(By.linkText("Great! Return to menu")).click();
+
+        assertThat(driver.manage().getCookieNamed("table").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass

@@ -64,6 +64,9 @@ public class SelectTest {
                 .as("Проверка появления надписи ")
                 .isEqualTo("Great! Return to menu"); //как сделать, если это правда, то кликнуть на нее?
         driver.findElement(By.linkText("Great! Return to menu")).click();
+
+        assertThat(driver.manage().getCookieNamed("select").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass

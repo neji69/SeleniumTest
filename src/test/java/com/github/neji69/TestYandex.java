@@ -21,7 +21,7 @@ public class TestYandex {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Test
+    @Test (enabled = false)
     public void testYandex() {
 
         String keyword = "руддщ цкщдв";

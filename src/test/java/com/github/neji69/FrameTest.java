@@ -8,6 +8,8 @@ import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class FrameTest {
     WebDriver driver;
 
@@ -31,6 +33,9 @@ public class FrameTest {
         driver.findElement(By.name("code")).sendKeys(valideCode); // не маленькая задержка , как отлавить и вылечить? или не заморачиваться?
         driver.findElement(By.name("ok")).click();
         driver.findElement(By.linkText("Great! Return to menu")).click();
+
+        assertThat(driver.manage().getCookieNamed("iframe").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass

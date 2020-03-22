@@ -10,6 +10,8 @@ import org.testng.annotations.*;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class FormTest {
 
     WebDriver driver;
@@ -21,7 +23,7 @@ public class FormTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Test
+    @Test (enabled = false)
     public void testForm() {
         driver.get("https://savkk.github.io/selenium-practice/");
         driver.findElement(By.id("form")).click();
@@ -38,6 +40,9 @@ public class FormTest {
 
         driver.findElement(By.xpath("//form[@id='testform']//textarea")).sendKeys("Я хз что тут должно быть");
         driver.findElement(By.xpath("//form[@id='testform']/input[@type='submit']")).click();
+
+        assertThat(driver.manage().getCookieNamed("form").getValue())
+                .isEqualTo("done");
     }
 
     @AfterClass
