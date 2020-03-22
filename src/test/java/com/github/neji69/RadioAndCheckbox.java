@@ -4,9 +4,7 @@ import org.openqa.selenium.By;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +14,7 @@ public class RadioAndCheckbox {
 
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().arch32().setup();
         driver = new ChromeDriver();
@@ -25,6 +23,7 @@ public class RadioAndCheckbox {
 
     @Test
     public void testRadioCheckbox() {
+        driver.get("https://savkk.github.io/selenium-practice/");
         driver.findElement(By.id("checkbox")).click();
         driver.findElement(By.id("one")).click();
         driver.findElement(By.id("go")).click();
@@ -52,7 +51,7 @@ public class RadioAndCheckbox {
         //Вот в данном тесте что и где мне нужно было залогировать и почему?
     }
 
-    @AfterTest()
+    @AfterClass
     public void exitDriver() {
         driver.quit();
     }

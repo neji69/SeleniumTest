@@ -4,9 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +14,7 @@ public class TestButton {
 
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().arch32().setup();
         driver = new ChromeDriver();
@@ -46,7 +44,7 @@ public class TestButton {
         driver.findElement(By.linkText("Great! Return to menu")).click();
     }
 
-    @AfterTest()
+    @AfterClass
     public void exitDriver() {
         driver.quit();
     }

@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +18,7 @@ public class SelectTest {
 
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().arch32().setup();
         driver = new ChromeDriver();
@@ -68,7 +66,7 @@ public class SelectTest {
         driver.findElement(By.linkText("Great! Return to menu")).click();
     }
 
-    @AfterTest()
+    @AfterClass
     public void exitDriver() {
         driver.quit();
     }

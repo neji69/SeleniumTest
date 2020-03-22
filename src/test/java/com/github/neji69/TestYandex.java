@@ -5,9 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static org.assertj.core.api.Assertions.*;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +14,7 @@ public class TestYandex {
 
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().arch32().setup();
         driver = new ChromeDriver();
@@ -30,6 +28,7 @@ public class TestYandex {
         driver.get("https://yandex.ru");
         driver.findElement(By.name("text")).sendKeys(keyword + Keys.ENTER);
 
+
         String polePoiska = driver.findElement(By.name("text")).getAttribute("value");
 
         assertThat(polePoiska)
@@ -41,7 +40,7 @@ public class TestYandex {
                 .isEqualTo("hello world — Яндекс: нашлось 2 млн результатов");
     }
 
-    @AfterTest()
+    @AfterClass
     public void exitDriver() {
         driver.quit();
     }
