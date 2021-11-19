@@ -46,23 +46,18 @@ public class SelectTest {
         int index1 = 0; // используеться для выбора индекса из списка
         int index2 = 3; // используеться для выбора индекса из списка
 
-        seleclanguages.selectByIndex(index1); // Есть ли разница обращаться к множественному выбору по имени или индексу?
+        seleclanguages.selectByIndex(index1);
         seleclanguages.selectByIndex(index2);
         driver.findElement(By.id("go")).click();
         List<WebElement> elementNameResult = driver.findElements(By.name("result"));
 
-        assertThat(elementNameResult.get(1).getText()) //как находить правильно второй одинаковый элемент,пришлось использовать икспатч
+        assertThat(elementNameResult.get(1).getText())
                 .as("Проверка выбора языков программирования ")
-                .isEqualTo(progLang.get(index1) + ", " + progLang.get(index2)); // очень большие сомнения про запятую. это явно костыль.
-        // но как подругому не пойму. А если надо будет проверить 3 значения
-        // надо будет еще одну запятую рисовать? Или раз мы знаем что должно
-        // получиться  просто и задать этот результа? А как же автоматизация?7??7
-
-        // еще можешь потом показать как использовать логические условия типа и или в асертдж
+                .isEqualTo(progLang.get(index1) + ", " + progLang.get(index2));
 
         assertThat(driver.findElement(By.linkText("Great! Return to menu")).getText())
                 .as("Проверка появления надписи ")
-                .isEqualTo("Great! Return to menu"); //как сделать, если это правда, то кликнуть на нее?
+                .isEqualTo("Great! Return to menu");
         driver.findElement(By.linkText("Great! Return to menu")).click();
 
         assertThat(driver.manage().getCookieNamed("select").getValue())
