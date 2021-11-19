@@ -30,7 +30,7 @@ public class FrameTest {
         String valideCode = unvalidCode.replaceAll("Your code is: ", "");
         driver.switchTo().defaultContent();
 
-        driver.findElement(By.name("code")).sendKeys(valideCode); // не маленькая задержка , как отлавить и вылечить? или не заморачиваться?
+        driver.findElement(By.name("code")).sendKeys(valideCode);
         driver.findElement(By.name("ok")).click();
         driver.findElement(By.linkText("Great! Return to menu")).click();
 
