@@ -31,7 +31,7 @@ public class PromtAllertConfirm {
     public void testAlert() {
         driver.get("https://savkk.github.io/selenium-practice/");
         driver.findElement(By.id("alerts")).click();
-        driver.findElement(By.className("get")).click(); // разница между класc и класcнейм?
+        driver.findElement(By.className("get")).click();
         Alert alert = driver.switchTo().alert();
         String unvalidCode = alert.getText();
         ;
