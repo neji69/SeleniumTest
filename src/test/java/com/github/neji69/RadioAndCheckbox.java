@@ -37,18 +37,7 @@ public class RadioAndCheckbox {
         assertThat(driver.findElement(By.id("radio_one")).getAttribute("value"))
                 .as("проверка результата радиобокса")
                 .isEqualTo(driver.findElement(By.id("radio_result")).getText());
-        driver.findElement(By.linkText("Great! Return to menu")).click();  //Вопрос. По условию надо проверить появилась ли надпись Great! Return to menu
-        //и после этого нажать на нее. Является ли мое действие
-        // просто нажатия кнопки. Проверкой того, что она появилась?
-        // ну тоесть если я могу на нее нажать значит она есть
-        // это вроде логично. но верно ли ?
-
-        // Вопрос номер 2. Есть ли смысл две отдельные страницы в нашем случае первая "https://savkk.github.io/selenium-practice/button/"
-        // и вторая "https://savkk.github.io/selenium-practice/checkboxes/" , тестировать в потоках, как два независимых теста?
-        // здесь этого не просят , но по сути, наверное, так и нужно ? да?
-        //
-        //И раз пошла такая пьянка, еще вопрос. Не понимаю про логирование. Что и где нужно логировать?
-        //Вот в данном тесте что и где мне нужно было залогировать и почему?
+        driver.findElement(By.linkText("Great! Return to menu")).click();
 
         assertThat(driver.manage().getCookieNamed("checkboxes").getValue())
                 .isEqualTo("done");
